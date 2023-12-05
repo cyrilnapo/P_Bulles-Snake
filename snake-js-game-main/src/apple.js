@@ -5,22 +5,36 @@ class Apple {
       this.size = size;
     }
   
+    //Première apparition pomme
     appear(apple) {
       apple.fillStyle = 'rgb(255, 103, 103)';
       apple.fillRect(this.x, this.y, this.size, this.size);
     }
   }
   
-  function RandomPositionX() {
+  //génère une position X aléatoire et qui n'est pas une case occupée par le serpent
+  function RandomPositionX(segments) {
     const valeursPossibles = [0, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750];
-    const indexAleatoireX = Math.floor(Math.random() * valeursPossibles.length);
-  
+    
+    let indexAleatoireX;
+
+    do {
+        indexAleatoireX = Math.floor(Math.random() * valeursPossibles.length);
+    } while (segments.some(segment => segment.x === valeursPossibles[indexAleatoireX]));
+
     return valeursPossibles[indexAleatoireX];
   }
   
-  function RandomPositionY() {
+  //génère une position Y aléatoire et qui n'est pas une case occupée par le serpent
+  function RandomPositionY(segments) {
     const valeursPossibles = [0, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750];
-    const indexAleatoireY = Math.floor(Math.random() * valeursPossibles.length);
+    
+    let indexAleatoireY;
+
+    do {
+        indexAleatoireY = Math.floor(Math.random() * valeursPossibles.length);
+    } while (segments.some(segment => segment.y === valeursPossibles[indexAleatoireY]));
+
     return valeursPossibles[indexAleatoireY];
   }
   

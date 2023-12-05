@@ -1,16 +1,17 @@
 import {apple} from './main.js' 
 import { RandomPositionX, RandomPositionY } from './apple.js';
 
+let score = 0;
+
 class Snake {
     constructor(x, y, size) {
       this.x = x;
       this.y = y;
       this.size = size;
-      this.segments = [{ x, y }];
-      this.score = 0;
-      
+      this.segments = [{ x, y }];      
     }
   
+    //affiche le serpent
     draw(snake) {
       snake.fillStyle = 'rgb(30, 110, 124)';
       for (let segment of this.segments) {
@@ -18,6 +19,7 @@ class Snake {
       }
     }
   
+    //gère l'avancement du serpent sur le terrain
     move(direction) {
       const head = { ...this.segments[0] };
       if (direction == 0) {
@@ -36,20 +38,29 @@ class Snake {
       }
     }
   
+    //check si la tête du serpent est en collision avec la bordure ou lui même
     verifyLimits() {
       const head = this.segments[0];
       if (head.x >= 800 || head.y >= 800 || head.y <= -50 || head.x <= -50) {
         alert("GAME OVER ! Votre score est de " + score + " !");
         exit;
       }
+
+      for (let i = 1; i < this.segments.length; i++) {
+        if ( head.x === this.segments[i].x && head.y === this.segments[i].y ) {
+          alert("GAME OVER ! Votre score est de " + score + " !");
+          exit;
+        }
+      }
     }
-  
+    
+    //le serpent mange une pomme
     eat() {
       const head = this.segments[0];
   
       if (head.x < apple.x + apple.size && head.x + this.size > apple.x && head.y < apple.y + apple.size && head.y + this.size > apple.y) {
-        apple.x = RandomPositionX();
-        apple.y = RandomPositionY();
+        apple.x = RandomPositionX(this.segments);
+        apple.y = RandomPositionY(this.segments);
         score++;
         return true;
       }
@@ -58,4 +69,4 @@ class Snake {
   }
   
   export { Snake };
-  
+  export {score} ;
