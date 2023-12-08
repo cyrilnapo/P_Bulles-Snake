@@ -8,7 +8,7 @@ const ctx = canvas.getContext('2d');
 const snake = new Snake(350, 350, 50);
 export const apple = new Apple(RandomPositionX(snake.segments), RandomPositionY(snake.segments), 50);
 
-let direction = 0;
+let direction;
 const scoreElement = document.getElementById('score');
 
 
