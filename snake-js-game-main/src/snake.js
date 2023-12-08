@@ -1,5 +1,6 @@
-import {apple} from './main.js' 
+import {apple} from './main.js';
 import { RandomPositionX, RandomPositionY } from './apple.js';
+
 
 let score = 0;
 
@@ -42,14 +43,13 @@ class Snake {
     verifyLimits() {
       const head = this.segments[0];
       if (head.x >= 800 || head.y >= 800 || head.y <= -50 || head.x <= -50) {
-        alert("GAME OVER ! Votre score est de " + score + " !");
-        exit;
+        this.gameOver();
+
       }
 
       for (let i = 1; i < this.segments.length; i++) {
         if ( head.x === this.segments[i].x && head.y === this.segments[i].y ) {
-          alert("GAME OVER ! Votre score est de " + score + " !");
-          exit;
+          this.gameOver();
         }
       }
     }
@@ -65,6 +65,11 @@ class Snake {
         return true;
       }
       return false;
+    }
+
+    gameOver(){
+      alert("Game over")
+      exit;
     }
   }
   

@@ -39,4 +39,3 @@ class Apple {
   }
   
   export { Apple, RandomPositionX, RandomPositionY };
-  
