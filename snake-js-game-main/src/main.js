@@ -10,7 +10,7 @@ export const apple = new Apple(RandomPositionX(snake.segments), RandomPositionY(
 
 let direction;
 const scoreElement = document.getElementById('score');
-
+let mouvementSecurity = false;
 
 const move = () => {
   
@@ -27,25 +27,33 @@ const move = () => {
 
   setTimeout(() => {
     requestAnimationFrame(move);
+    mouvementSecurity = false;
   }, 100);
 };
 
 document.onkeydown = (e) => {
   //aller en haut
-  if (e.keyCode === 38 && direction !== 1) {
+  if (e.keyCode === 38 && direction !== 1 && mouvementSecurity == false) {
     direction = 0;
+    mouvementSecurity = true;
   }
   //Aller en bas
-  else if (e.keyCode === 40 && direction !== 0) {
+  else if (e.keyCode === 40 && direction !== 0 && mouvementSecurity == false) {
     direction = 1;
+    mouvementSecurity = true;
+
   } 
   //Aller à gauche
-  else if (e.keyCode === 37 && direction !== 3) {
+  else if (e.keyCode === 37 && direction !== 3 && mouvementSecurity == false) {
     direction = 2;
+    mouvementSecurity = true;
+
   } 
   //Aller à droite
-  else if (e.keyCode === 39 && direction !== 2) {
+  else if (e.keyCode === 39 && direction !== 2 && mouvementSecurity == false) {
     direction = 3;
+    mouvementSecurity = true;
+
   }
 };
 

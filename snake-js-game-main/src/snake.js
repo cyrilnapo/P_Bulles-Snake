@@ -25,12 +25,16 @@ class Snake {
       const head = { ...this.segments[0] };
       if (direction == 0) {
         head.y -= 50;
+
       } else if (direction == 1) {
         head.y += 50;
+
       } else if (direction == 2) {
         head.x -= 50;
+
       } else if (direction == 3) {
         head.x += 50;
+
       }
       this.segments.unshift(head);
   
