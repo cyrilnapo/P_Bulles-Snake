@@ -21,7 +21,7 @@ class Apple {
       apple.fillRect(this.x, this.y, this.size, this.size);
     }
   }
-  
+
   /**
    * Génère une position X non occupée par le serpent
    * @param {*} segments liste des positions de chaque segments du serpent
