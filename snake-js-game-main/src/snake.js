@@ -106,3 +106,5 @@ class Snake {
   
   export { Snake };
   export {score} ;
+
+  

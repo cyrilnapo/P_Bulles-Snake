@@ -37,7 +37,7 @@ const move = () => {
 
   scoreElement.textContent = score; //afficher le score
 
-  //latence de mouvements
+  //latence de mouvements (millisecondes)
   setTimeout(() => {
     requestAnimationFrame(move);
     movementSecurity = false;
