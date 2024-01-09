@@ -1,3 +1,10 @@
+/**
+ * ETML
+ * Auteur : Cyril Napoleone
+ * Date : 09.01.2024
+ * Description : Fichier de la classe concernant la pomme du réplica. Reliée via les imports/exports au main
+ */
+
 class Apple {
     constructor(x, y, size) {
       this.x = x;
@@ -5,37 +12,50 @@ class Apple {
       this.size = size;
     }
   
-    //Première apparition pomme
+    /**
+     * Affiche la première pomme de la partie sur le terrain
+     * @param {*} apple l'objet représentant la pomme à afficher
+     */
     appear(apple) {
       apple.fillStyle = 'rgb(255, 103, 103)';
       apple.fillRect(this.x, this.y, this.size, this.size);
     }
   }
   
-  //génère une position X aléatoire et qui n'est pas une case occupée par le serpent
+  /**
+   * Génère une position X non occupée par le serpent
+   * @param {*} segments liste des positions de chaque segments du serpent
+   * @returns Une valeur X aléatoire qui n'est pas occupée
+   */
   function RandomPositionX(segments) {
     const valeursPossibles = [0, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750];
     
-    let indexAleatoireX;
+    let randomX;
 
+    //pioche une valeure X tant que elle est égale à une position X occupée par le serpent
     do {
-        indexAleatoireX = Math.floor(Math.random() * valeursPossibles.length);
-    } while (segments.some(segment => segment.x === valeursPossibles[indexAleatoireX]));
+        randomX = Math.floor(Math.random() * valeursPossibles.length);
+    } while (segments.some(segment => segment.x === valeursPossibles[randomX]));
 
-    return valeursPossibles[indexAleatoireX];
+    return valeursPossibles[randomX];
   }
   
-  //génère une position Y aléatoire et qui n'est pas une case occupée par le serpent
+/**
+ * Génère une position Y non occupée par le serpent
+ * @param {*} segments liste des positions de chaque segments du serpent
+ * @returns Une valeure Y aléatoire qui n'est pas occupée
+ */
   function RandomPositionY(segments) {
     const valeursPossibles = [0, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750];
     
-    let indexAleatoireY;
+    let randomY;
 
+    //pioche une valeure Y tant que elle est égale à une position Y occupée par le serpent
     do {
-        indexAleatoireY = Math.floor(Math.random() * valeursPossibles.length);
-    } while (segments.some(segment => segment.y === valeursPossibles[indexAleatoireY]));
+        randomY = Math.floor(Math.random() * valeursPossibles.length);
+    } while (segments.some(segment => segment.y === valeursPossibles[randomY]));
 
-    return valeursPossibles[indexAleatoireY];
+    return valeursPossibles[randomY];
   }
   
   export { Apple, RandomPositionX, RandomPositionY };
