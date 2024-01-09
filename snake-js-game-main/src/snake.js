@@ -6,8 +6,6 @@ let score = 0;
 
 class Snake {
     constructor(x, y, size) {
-      this.x = x;
-      this.y = y;
       this.size = size;
       this.segments = [{ x, y }];      
     }
@@ -72,7 +70,7 @@ class Snake {
     }
 
     gameOver(){
-      alert("Game over")
+      alert("Game over ! votre score est de " + score)
       exit;
     }
   }
